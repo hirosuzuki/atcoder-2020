@@ -1,10 +1,10 @@
 T = int(input())
-NAB = [[int(_) for _ in input().split()] for i in range(T)]
+NAB = [[int(_) for _ in input().split()] for _ in range(T)]
 
 M = 1000000007
 
 
-def calc(n, a, b: int) -> int:
+def calc(n: int, a: int, b: int) -> int:
     t = n - a - b
     x4 = (t + 1) * (t + 2) // 2 if t >= 0 else 0
     x3 = x4 * 2
