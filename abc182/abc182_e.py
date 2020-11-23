@@ -24,33 +24,33 @@ def solve(H, W, N, M, AB, CD):
             continue
         result += 1
         cs[y][x] = 1
-        for dy, dx in ((0, -1), (0, +1)):
-            cy, cx = y, x
+        for dy in (-1, +1):
+            cy = y
             while 1:
                 cy += dy
-                cx += dx
-                if cs[cy][cx] != 0:
+                csy = cs[cy]
+                if csy[x] != 0:
                     break
                 result += 1
-                cs[cy][cx] = 1
+                csy[x] = 1
 
     #print(cs)
 
     for i in range(N):
         y, x = AB[i]
-        if (cs[y][x] & 2) == 2:
+        csy = cs[y]
+        if (csy[x] & 2) == 2:
             continue
-        result += (cs[y][x] == 0)
-        cs[y][x] |= 2
-        for dy, dx in ((-1, 0), (+1, 0)):
-            cy, cx = y, x
+        result += (csy[x] == 0)
+        csy[x] |= 2
+        for dx in (-1, +1):
+            cx = x
             while 1:
-                cy += dy
                 cx += dx
-                if cs[cy][cx] == Z:
+                if csy[cx] == Z:
                     break
-                result += (cs[cy][cx] == 0)
-                cs[cy][cx] |= 2
+                result += (csy[cx] == 0)
+                csy[cx] |= 2
 
     #print(cs)
 
