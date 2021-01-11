@@ -1,4 +1,3 @@
-#from typing import Dict
 from functools import lru_cache
 
 import sys
@@ -8,7 +7,7 @@ X, Y = [int(_) for _ in input().split()]
 
 def solve(X: int, Y: int):
 
-    @lru_cache(maxsize = 1000000)
+    @lru_cache(maxsize=None)
     def calc(y: int) -> int:
         r = abs(X - y)
         if y == 1:
